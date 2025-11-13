@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+
+
+/* base */
+:root{
+  --pine: #0E2D1B;
+  --pagebg: #F6F6EE;
+  --leaf: #EAF0DE;
+  --accent: #E58E26;
+  --button-stroke: #B57A2A;
+}
+
+html, body, #__next { height: 100%; }
+
+body {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: var(--pagebg);
+  color: #12321b;
+}
+
+/* helpers */
+.text-pine { color: var(--pine); }
+.bg-pine { background-color: var(--pine); }
+.bg-accent { background-color: var(--accent); }
+.text-accent { color: var(--accent); }
+
+/* swiper tweaks */
+.swiper-button-next, .swiper-button-prev { color: var(--accent); }
+.swiper-pagination-bullet { background: #fff !important; opacity: 0.7; }
+.swiper-pagination-bullet-active { background: var(--accent) !important; opacity: 1; }
+
+/* small display helpers */
+.container-max { max-width: 1200px; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 1.2s ease-in-out;
+}

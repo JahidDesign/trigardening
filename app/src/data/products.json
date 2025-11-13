@@ -1,0 +1,14 @@
+[
+  { "id": 1, "name": "Monstera Deliciosa", "category": "Indoor Plant", "price": "৳ 2,000", "rating": 5, "reviews": 26, "image": "/images/products/monstera.jpg", "description": "A lush indoor plant with large, glossy leaves that bring a tropical vibe to any space." },
+  { "id": 2, "name": "Organic Compost", "category": "Fertilizer", "price": "৳ 60", "rating": 4, "reviews": 12, "image": "/images/products/fertilizer.jpg", "description": "Natural compost for organic gardening — rich in nutrients to keep your plants healthy and thriving." },
+  { "id": 3, "name": "Pruning Shears", "category": "Equipment", "price": "৳ 180", "rating": 5, "reviews": 34, "image": "/images/products/shears.jpg", "description": "Durable stainless steel pruning shears for clean and easy cuts — perfect for home gardeners." },
+  { "id": 4, "name": "Aloe Vera", "category": "Medicinal Plant", "price": "৳ 250", "rating": 5, "reviews": 18, "image": "/images/products/aloe.jpg", "description": "A medicinal plant known for its soothing gel and easy care — great for indoors or sunny windows." },
+  { "id": 5, "name": "Snake Plant", "category": "Indoor Plant", "price": "৳ 1,200", "rating": 4, "reviews": 40, "image": "/images/products/snake.jpg", "description": "Tough, low-light plant ideal for beginners." },
+  { "id": 6, "name": "Ceramic Pot", "category": "Pots", "price": "৳ 400", "rating": 4, "reviews": 9, "image": "/images/products/pot.jpg", "description": "Stylish ceramic pot for indoor plants." },
+  { "id": 7, "name": "Hose Nozzle", "category": "Equipment", "price": "৳ 350", "rating": 4, "reviews": 7, "image": "/images/products/nozzle.jpg", "description": "Adjustable nozzle for precise watering." },
+  { "id": 8, "name": "Rose Plant", "category": "Outdoor Plant", "price": "৳ 900", "rating": 4, "reviews": 15, "image": "/images/products/rose.jpg", "description": "Classic rose plant for garden beds or pots." },
+  { "id": 9, "name": "Liquid Fertilizer", "category": "Fertilizer", "price": "৳ 150", "rating": 4, "reviews": 6, "image": "/images/products/liquid-fert.jpg", "description": "Concentrated liquid fertilizer for faster growth." },
+  { "id": 10, "name": "Garden Gloves", "category": "Equipment", "price": "৳ 120", "rating": 4, "reviews": 22, "image": "/images/products/gloves.jpg", "description": "Comfortable gloves to protect your hands while gardening." },
+  { "id": 11, "name": "Lavender", "category": "Outdoor Plant", "price": "৳ 700", "rating": 5, "reviews": 14, "image": "/images/products/lavender.jpg", "description": "Fragrant lavender, great for borders and pollinators." },
+  { "id": 12, "name": "Cow Manure", "category": "Fertilizer", "price": "৳ 90", "rating": 4, "reviews": 5, "image": "/images/products/manure.jpg", "description": "Organic cow manure for soil enrichment." }
+]

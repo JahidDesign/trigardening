@@ -1,0 +1,35 @@
+[
+  {
+    "id": "monstera-care",
+    "title": "10 Essential Tips for Indoor Plant Care",
+    "excerpt": "Learn how to keep indoor plants healthy: watering schedules, light tips, soil, and pest prevention.",
+    "content": "Watering: Keep a consistent schedule and check soil moisture before watering.\n\nLight: Place plants near bright, indirect light. Rotate pots monthly for even growth.\n\nSoil & Fertilizer: Use a well-draining soil mix. Fertilize monthly during growing season.\n\nPests: Inspect leaves regularly. Use gentle soaps or neem oil for common pests.\n\n(… add more content here or load from CMS.)",
+    "hero": "https://i.ibb.co.com/TDfgSRjd/aiokr-chen-Ytq-UWAl-L2-GE-unsplash.jpg",
+    "date": "2025-09-15",
+    "minutesToRead": 6,
+    "author": { "name": "Jannito Chowdhury", "avatar": "/images/authors/jannito.jpg" },
+    "category": "Plant Care"
+  },
+  {
+    "id": "compost-fertilizer",
+    "title": "Organic Compost: How & Why to Use It",
+    "excerpt": "Compost improves soil, retains moisture and encourages beneficial microbes. Here’s how to make and use it.",
+    "content": "Compost is the backbone of organic gardening... (full post content)",
+    "hero": "https://i.ibb.co.com/wNFSGjG9/johann-siemens-EPy0g-BJzz-ZU-unsplash.jpg",
+    "date": "2025-08-01",
+    "minutesToRead": 4,
+    "author": { "name": "Anika Rahman" },
+    "category": "Fertilizers"
+  },
+  {
+    "id": "pruning-guide",
+    "title": "Pruning Guide for Healthier Plants",
+    "excerpt": "When and how to prune shrubs and houseplants for better blooms and shape.",
+    "content": "Pruning encourages new growth... (full post content)",
+    "hero": "https://i.ibb.co.com/LdpfVMp9/name-gravity-Ad-Us32i0jc-unsplash.jpg",
+    "date": "2025-07-03",
+    "minutesToRead": 5,
+    "author": { "name": "Garden Team" },
+    "category": "Tools"
+  }
+]

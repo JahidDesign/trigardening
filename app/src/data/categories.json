@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Plants",
+    "subtitle": "Indoor & Outdoor Plants",
+    "icon": "/images/icons/plant.svg"
+  },
+  {
+    "title": "Medicine",
+    "subtitle": "Natural Plant Care",
+    "icon": "/images/icons/medicine.svg"
+  },
+  {
+    "title": "Equipment",
+    "subtitle": "Professional Gardening Tools",
+    "icon": "/images/icons/tool.svg"
+  },
+  {
+    "title": "Fertilizers",
+    "subtitle": "Safe Plant Protection",
+    "icon": "/images/icons/fertilizer.svg"
+  }
+]
