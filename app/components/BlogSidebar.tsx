@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { Post } from '../lib/posts';
 
 // Respect prefers-reduced-motion
@@ -14,9 +15,7 @@ function usePrefersReducedMotion() {
 }
 
 export default function BlogSidebar({ posts }: { posts: Post[] }) {
-  const sorted = [...posts].sort(
-    (a, b) => +new Date(b.date) - +new Date(a.date)
-  );
+  const sorted = [...posts].sort((a, b) => +new Date(b.date) - +new Date(a.date));
   const recent = sorted.slice(0, 4);
 
   const counts = sorted.reduce<Record<string, number>>((acc, p) => {
@@ -29,22 +28,23 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
   const reduced = usePrefersReducedMotion();
   const mountedRef = useRef(false);
 
-  // variants defined after we know `reduced` (optional — keeps logic clear)
-  const container = {
+  // typed as Variants so TS accepts the shape
+  const container: Variants = {
     hidden: { opacity: 0, y: 8 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { staggerChildren: 0.08, when: 'beforeChildren' },
+      transition: { staggerChildren: 0.08, when: ('beforeChildren' as const) },
     },
   };
 
-  const item = {
+  // ensure 'spring' is a literal so TS doesn't widen it to `string`
+  const item: Variants = {
     hidden: { opacity: 0, y: 8 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { type: 'spring', stiffness: 260, damping: 20 },
+      transition: { type: ('spring' as const), stiffness: 260, damping: 20 },
     },
   };
 
@@ -62,7 +62,10 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
           className="space-y-6"
         >
           {/* Search */}
-          <motion.div variants={reduced ? undefined : item} className="bg-white p-4 rounded-xl shadow">
+          <motion.div
+            variants={reduced ? undefined : item}
+            className="bg-white p-4 rounded-xl shadow"
+          >
             <label htmlFor="search-articles" className="sr-only">
               Search articles
             </label>
@@ -75,7 +78,11 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
           </motion.div>
 
           {/* Categories */}
-          <motion.details variants={reduced ? undefined : item} className="bg-white p-4 rounded-xl shadow" open>
+          <motion.details
+            variants={reduced ? undefined : item}
+            className="bg-white p-4 rounded-xl shadow"
+            open
+          >
             <summary className="flex items-center justify-between cursor-pointer list-none text-sm text-gray-700 font-semibold md:hidden">
               Blog Categories
               <span className="text-xs text-gray-400">Show</span>
@@ -91,12 +98,8 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
                     key={category}
                     className="flex items-center justify-between hover:bg-gray-50 rounded-md px-2 py-1 transition"
                   >
-                    <span className="text-[#0E2D1B] font-medium truncate">
-                      {category}
-                    </span>
-                    <span className="text-xs text-gray-400 ml-2">
-                      {counts[category]}
-                    </span>
+                    <span className="text-[#0E2D1B] font-medium truncate">{category}</span>
+                    <span className="text-xs text-gray-400 ml-2">{counts[category]}</span>
                   </li>
                 ))}
               </ul>
@@ -104,7 +107,11 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
           </motion.details>
 
           {/* Recent posts */}
-          <motion.details variants={reduced ? undefined : item} className="bg-white p-4 rounded-xl shadow" open>
+          <motion.details
+            variants={reduced ? undefined : item}
+            className="bg-white p-4 rounded-xl shadow"
+            open
+          >
             <summary className="flex items-center justify-between cursor-pointer list-none text-sm text-gray-700 font-semibold md:hidden">
               Recent Posts
               <span className="text-xs text-gray-400">Show</span>
@@ -118,17 +125,10 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
                 {recent.map((r) => (
                   <li key={r.id} className="flex items-center gap-3">
                     <div className="w-12 h-12 relative rounded-md overflow-hidden flex-shrink-0">
-                      <img
-                        src={r.hero}
-                        alt={r.title}
-                        sizes="48px"
-                        className="object-cover"
-                      />
+                      <img src={r.hero} alt={r.title} sizes="48px" className="object-cover" />
                     </div>
                     <div className="min-w-0">
-                      <span className="text-sm font-medium text-[#0E2D1B] line-clamp-2 block">
-                        {r.title}
-                      </span>
+                      <span className="text-sm font-medium text-[#0E2D1B] line-clamp-2 block">{r.title}</span>
                       <div className="text-xs text-gray-400 mt-1">
                         {new Intl.DateTimeFormat(undefined, {
                           year: 'numeric',
@@ -148,12 +148,8 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
             variants={reduced ? undefined : item}
             className="bg-white p-4 rounded-xl shadow text-center"
           >
-            <h4 className="font-semibold text-base text-[#0E2D1B]">
-              Subscribe to our Newsletter
-            </h4>
-            <p className="text-xs text-gray-500 mt-1">
-              Get the latest gardening tips & updates.
-            </p>
+            <h4 className="font-semibold text-base text-[#0E2D1B]">Subscribe to our Newsletter</h4>
+            <p className="text-xs text-gray-500 mt-1">Get the latest gardening tips & updates.</p>
             <form
               onSubmit={(e) => e.preventDefault()}
               className="mt-3 flex gap-2"
