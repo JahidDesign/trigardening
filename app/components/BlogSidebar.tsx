@@ -29,6 +29,7 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
   const reduced = usePrefersReducedMotion();
   const mountedRef = useRef(false);
 
+  // variants defined after we know `reduced` (optional — keeps logic clear)
   const container = {
     hidden: { opacity: 0, y: 8 },
     show: {
@@ -57,11 +58,11 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
         <motion.div
           initial={reduced ? false : 'hidden'}
           animate={reduced ? false : 'show'}
-          variants={container}
+          variants={reduced ? undefined : container}
           className="space-y-6"
         >
           {/* Search */}
-          <motion.div variants={item} className="bg-white p-4 rounded-xl shadow">
+          <motion.div variants={reduced ? undefined : item} className="bg-white p-4 rounded-xl shadow">
             <label htmlFor="search-articles" className="sr-only">
               Search articles
             </label>
@@ -74,7 +75,7 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
           </motion.div>
 
           {/* Categories */}
-          <motion.details variants={item} className="bg-white p-4 rounded-xl shadow" open>
+          <motion.details variants={reduced ? undefined : item} className="bg-white p-4 rounded-xl shadow" open>
             <summary className="flex items-center justify-between cursor-pointer list-none text-sm text-gray-700 font-semibold md:hidden">
               Blog Categories
               <span className="text-xs text-gray-400">Show</span>
@@ -103,7 +104,7 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
           </motion.details>
 
           {/* Recent posts */}
-          <motion.details variants={item} className="bg-white p-4 rounded-xl shadow" open>
+          <motion.details variants={reduced ? undefined : item} className="bg-white p-4 rounded-xl shadow" open>
             <summary className="flex items-center justify-between cursor-pointer list-none text-sm text-gray-700 font-semibold md:hidden">
               Recent Posts
               <span className="text-xs text-gray-400">Show</span>
@@ -144,7 +145,7 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
 
           {/* Newsletter */}
           <motion.div
-            variants={item}
+            variants={reduced ? undefined : item}
             className="bg-white p-4 rounded-xl shadow text-center"
           >
             <h4 className="font-semibold text-base text-[#0E2D1B]">
