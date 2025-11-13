@@ -1,5 +1,5 @@
 // src/lib/posts.ts
-import POSTS from "../data/posts.json";   
+import POSTS from "../src/data/posts.json";   
 
 export type Post = {
   id: string;
