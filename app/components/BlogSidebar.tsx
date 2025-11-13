@@ -5,17 +5,34 @@ import { motion, AnimatePresence } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import { Post } from '../lib/posts';
 
-// Respect prefers-reduced-motion
+// Respect prefers-reduced-motion safely (SSR-friendly)
 function usePrefersReducedMotion() {
-  if (typeof window === 'undefined') return false;
+  if (typeof window === 'undefined') return true; // default to reduced motion on SSR
   return (
     window.matchMedia &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   );
 }
 
+// Safely format dates
+function formatPostDate(date?: string) {
+  if (!date) return 'Unknown date';
+  const d = new Date(date);
+  if (isNaN(d.getTime())) return 'Invalid date';
+  return new Intl.DateTimeFormat(undefined, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }).format(d);
+}
+
 export default function BlogSidebar({ posts }: { posts: Post[] }) {
-  const sorted = [...posts].sort((a, b) => +new Date(b.date) - +new Date(a.date));
+  const sorted = [...posts].sort((a, b) => {
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    return dateB - dateA;
+  });
+
   const recent = sorted.slice(0, 4);
 
   const counts = sorted.reduce<Record<string, number>>((acc, p) => {
@@ -28,7 +45,6 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
   const reduced = usePrefersReducedMotion();
   const mountedRef = useRef(false);
 
-  // typed as Variants so TS accepts the shape
   const container: Variants = {
     hidden: { opacity: 0, y: 8 },
     show: {
@@ -38,7 +54,6 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
     },
   };
 
-  // ensure 'spring' is a literal so TS doesn't widen it to `string`
   const item: Variants = {
     hidden: { opacity: 0, y: 8 },
     show: {
@@ -87,7 +102,6 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
               Blog Categories
               <span className="text-xs text-gray-400">Show</span>
             </summary>
-
             <div className="mt-0 md:mt-0">
               <h3 className="hidden md:block font-semibold text-sm text-gray-700 mb-3">
                 Blog Categories
@@ -116,7 +130,6 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
               Recent Posts
               <span className="text-xs text-gray-400">Show</span>
             </summary>
-
             <div className="mt-0 md:mt-0">
               <h3 className="hidden md:block font-semibold text-sm text-gray-700 mb-3">
                 Recent Posts
@@ -125,16 +138,23 @@ export default function BlogSidebar({ posts }: { posts: Post[] }) {
                 {recent.map((r) => (
                   <li key={r.id} className="flex items-center gap-3">
                     <div className="w-12 h-12 relative rounded-md overflow-hidden flex-shrink-0">
-                      <img src={r.hero} alt={r.title} sizes="48px" className="object-cover" />
+                      {r.hero ? (
+                        <img
+                          src={r.hero}
+                          alt={r.title ?? 'Post image'}
+                          sizes="48px"
+                          className="object-cover w-full h-full"
+                        />
+                      ) : (
+                        <div className="bg-gray-200 w-full h-full" />
+                      )}
                     </div>
                     <div className="min-w-0">
-                      <span className="text-sm font-medium text-[#0E2D1B] line-clamp-2 block">{r.title}</span>
+                      <span className="text-sm font-medium text-[#0E2D1B] line-clamp-2 block">
+                        {r.title ?? 'Untitled'}
+                      </span>
                       <div className="text-xs text-gray-400 mt-1">
-                        {new Intl.DateTimeFormat(undefined, {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric',
-                        }).format(new Date(r.date))}
+                        {formatPostDate(r.date)}
                       </div>
                     </div>
                   </li>
