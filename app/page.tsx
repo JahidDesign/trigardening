@@ -21,22 +21,22 @@ export default function Home() {
             <CategoryCard
               title="Plants"
               subtitle="Indoor & Outdoor Plants"
-              icon="/images/icons/plant.svg"
+              icon="https://i.ibb.co.com/pBhZq72z/tree6.jpg"
             />
             <CategoryCard
               title="Medicine"
               subtitle="Natural Plant Care"
-              icon="/images/icons/medicine.svg"
+              icon="https://i.ibb.co.com/7J9mryMP/tree2.jpg"
             />
             <CategoryCard
               title="Equipment"
               subtitle="Gardening Tools"
-              icon="/images/icons/tool.svg"
+              icon="https://i.ibb.co.com/Gv625zmG/tree7.jpg"
             />
             <CategoryCard
               title="Fertilizers"
               subtitle="Safe Plant Protection"
-              icon="/images/icons/fertilizer.svg"
+              icon="https://i.ibb.co.com/G4zTZnjD/tree5.jpg"
             />
           </div>
         </section>
