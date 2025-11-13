@@ -1,5 +1,5 @@
 // src/lib/posts.ts
-import POSTS from "../src/data/posts.json";
+import POSTS from "../data/posts.json";   
 
 export type Post = {
   id: string;
@@ -13,10 +13,9 @@ export type Post = {
   category?: string;
 };
 
-const posts: Post[] = POSTS as Post[];
+const posts: Post[] = (POSTS as Post[]) || [];
 
 export function getAllPosts(): Post[] {
-  // return newest-first (optional)
   return posts.slice().sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
