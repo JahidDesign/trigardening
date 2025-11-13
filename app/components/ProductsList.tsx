@@ -456,7 +456,7 @@ export default function ProductsPageSingleFile(): React.ReactElement {
               <div className="mb-4">
                 <h4 className="text-sm font-medium text-gray-700 mb-2">Price Range</h4>
                 <div className="flex gap-2 items-center">
-                  <input type="number" value={minPrice} onChange={(e) => setMinPrice(Number(e.target.value))} className="w-1/2 p-2 text-sm border rounded" placeholder="Min" />
+                  <input type="number" value ={minPrice} onChange={(e) => setMinPrice(Number(e.target.value))} className="w-1/2 p-2 text-sm border rounded" placeholder="Min" />
                   <input type="number" value={maxPrice} onChange={(e) => setMaxPrice(Number(e.target.value))} className="w-1/2 p-2 text-sm border rounded" placeholder="Max" />
                 </div>
               </div>

@@ -127,7 +127,7 @@ const productsData: Product[] = [
   },
 ];
 
-export default function ProductsPage(): JSX.Element {
+export default function ProductsPage():React.ReactElement {
   const INITIAL = 6;
   const STEP = 3;
 
